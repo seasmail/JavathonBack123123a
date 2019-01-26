@@ -14,6 +14,10 @@ public class Bonus {
 
     public int value;
 
+    public Long companyId;
+
+    public Long idCompany;
+
     private Bonus(){}
 
     public Bonus(int value){

@@ -11,9 +11,9 @@ public class Client {
     @GeneratedValue
     private Long id;
 
-    public int phoneNumber;
+    private int phoneNumber;
 
-    public String name;
+    private String name;
 
     @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true)
     Set<Bonus> bonuses = new HashSet<>();
@@ -25,4 +25,31 @@ public class Client {
         this.name = name;
     }
 
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public int getPhoneNumber() {
+        return phoneNumber;
+    }
+
+    public void setPhoneNumber(int phoneNumber) {
+        this.phoneNumber = phoneNumber;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public void addBonus(Bonus bonus){
+        this.bonuses.add(bonus);
+    }
 }
