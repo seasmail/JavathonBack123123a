@@ -28,26 +28,36 @@ public class BonusController {
     }
 
     @GetMapping("/api/client/findbonus")
-    public List<Bonus> getBonusByClientIdAndCompanyName(@RequestParam(value = "id") Long clientId,
-                                                        @RequestParam(value = "id") Long companyId)
+    public List<Bonus> getBonusByClientIdAndCompanyName(@RequestParam(value = "id") int clientId,
+                                                        @RequestParam(value = "id") int companyId)
     {
         return bonusRepository.findAllByClientIdAndCompanyId(clientId, companyId);
     }
 
     @PostMapping("/api/bonus/add")
-    public void addBonus(@RequestParam(value = "clientPhoneNumber") String phoneNumber,
+    public void addBonus(@RequestParam(value = "clientPhoneNumber") Long phoneNumber,
                          @RequestParam(value = "companyName") String name) {
-        Company company =
+        Company company = companyRepository.findByName(name);
+        Client client = clientRepository.findByPhoneNumber(phoneNumber);
+        bonusRepository.save(new Bonus(company.getId(), client.getId()));
     }
-    public String checkBonusAdge (@RequestParam(value = "id") Long clientId,
-                                  @RequestParam(value = "id") Long companyId)
-    {
-        if (clientRepository.findById(clientId).getBonus == companyRepository.findById(companyId).get().getMaxBonus)
-        {
-            clientRepository.findById(clientId).get().set(companyId);
-            return " You can get the prize!";
-        }
-        return "Not enoughth bonuses to get a prize!";
+
+    @PostMapping("/api/bonus/increase")
+    public void increaseBonus(@RequestParam(value = "clientPhoneNumber") Long phoneNumber,
+                         @RequestParam(value = "companyName") String name) {
+        Company company = companyRepository.findByName(name);
+        Client client = clientRepository.findByPhoneNumber(phoneNumber);
+        Bonus tmp = bonusRepository.findAllByClientIdAndCompanyId(company.getId(), client.getId()).get(0);
+        tmp.setValue(tmp.getCompanyId() + 1);
+    }
+    @PostMapping("/api/bonus/resetBonuses")
+    public String resetBonuses(@RequestParam(value = "clientPhoneNumber") Long phoneNumber,
+                             @RequestParam(value = "companyName") String name){
+        Company company = companyRepository.findByName(name);
+        Client client = clientRepository.findByPhoneNumber(phoneNumber);
+        Bonus tmp = bonusRepository.findAllByClientIdAndCompanyId(company.getId(), client.getId()).get(0);
+        tmp.setValue(0);
+        return "На вашем счете 0 бонусов";
     }
 
 }
