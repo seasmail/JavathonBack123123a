@@ -19,18 +19,18 @@ public class ClientController {
     }
 
     @GetMapping("/api/client/getbyid")
-    public Client getClientById(@RequestParam(value = "id") Long id){
+    public Client getClientById(@RequestParam(value = "id") int id){
         return clientRepository.findById(id).get();
     }
 
     @PostMapping("/api/client/add")
     public void addclient(@RequestParam(value = "name") String name,
-                            @RequestParam(value = "phoneNumber") int phoneNumber){
+                            @RequestParam(value = "phoneNumber") long phoneNumber){
         clientRepository.save(new Client(phoneNumber, name));
     }
 
     @GetMapping("/api/client/deletebyid")
-    public void deleteClient(@RequestParam(value = "id") Long id){
+    public void deleteClient(@RequestParam(value = "id") int id){
 
         clientRepository.deleteById(id);
     }
