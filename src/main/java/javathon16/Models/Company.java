@@ -20,18 +20,18 @@ public class Company {
 
     private Company(){}
 
-    public Company(Long id, String name, int maxBonus){
+    public Company(int id, String name, int maxBonus){
         this.id = id;
         this.name = name;
         this.maxBonus = maxBonus;
         this.clients = new HashSet<>();
     }
 
-    public Long getId() {
+    public int getId() {
         return id;
     }
 
-    public void setId(Long id) {
+    public void setId(int id) {
         this.id = id;
     }
 
