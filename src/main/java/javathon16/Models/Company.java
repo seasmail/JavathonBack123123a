@@ -9,7 +9,7 @@ public class Company {
 
     @Id
     @GeneratedValue
-    private Long id;
+    private int id;
 
     private String name;
 

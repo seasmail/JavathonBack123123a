@@ -9,7 +9,7 @@ public class Client {
 
     @Id
     @GeneratedValue
-    private Long id;
+    private int id;
 
     private int phoneNumber;
 
