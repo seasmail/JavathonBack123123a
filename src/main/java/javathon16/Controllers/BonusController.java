@@ -5,10 +5,7 @@ import javathon16.Repositories.BonusRepository;
 import javathon16.Repositories.ClientRepository;
 import javathon16.Models.Bonus;
 import javathon16.Repositories.CompanyRepository;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.beans.factory.annotation.Autowired;
 
 @RestController
@@ -27,6 +24,7 @@ public class BonusController {
         return bonusRepository.findById(clientId).get(); // TODO!!! Дописать запрос по двум параметрам
     }
 
+    @PostMapping("/api/bonus/add")
     public String addBonus (@RequestParam( value = "id" ) int value){
         bonusRepository.save(new Bonus(value));
         return "Succsessfuly added new bonus with value " + value;

@@ -16,8 +16,6 @@ public class ClientController {
     @Autowired
     public ClientController(ClientRepository clientRepository){
         this.clientRepository = clientRepository;
-        clientRepository.save(new Client(789, "jeffff"));
-        clientRepository.save(new Client(555, "hhhh"));
     }
 
     @GetMapping("/api/client/getbyid")
@@ -26,18 +24,15 @@ public class ClientController {
     }
 
     @PostMapping("/api/client/add")
-    public String addclient(@RequestParam(value = "name") String name,
+    public void addclient(@RequestParam(value = "name") String name,
                             @RequestParam(value = "phoneNumber") int phoneNumber){
         clientRepository.save(new Client(phoneNumber, name));
-        return "success!";
     }
 
     @GetMapping("/api/client/deletebyid")
-    public String deleteClient(@RequestParam(value = "id") Long id){
+    public void deleteClient(@RequestParam(value = "id") Long id){
 
         clientRepository.deleteById(id);
-        return "success!";
-
     }
 
 

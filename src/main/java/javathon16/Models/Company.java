@@ -16,7 +16,7 @@ public class Company {
     private int maxBonus;
 
     @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true)
-    Set<Client> clients = new HashSet<>();
+    private Set<Client> clients;
 
     private Company(){}
 
@@ -24,6 +24,7 @@ public class Company {
         this.id = id;
         this.name = name;
         this.maxBonus = maxBonus;
+        this.clients = new HashSet<>();
     }
 
     public Long getId() {
@@ -49,5 +50,9 @@ public class Company {
     public void setMaxBonus(int maxBonus) {
         this.maxBonus = maxBonus;
     }
+
+    public Set<Client> getClients(){ return clients; }
+
+    public void addClient(Client client){ clients.add(client); }
 
 }

@@ -16,13 +16,15 @@ public class Client {
     private String name;
 
     @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true)
-    Set<Bonus> bonuses = new HashSet<>();
+    private Set<Bonus> bonuses;
 
     private Client(){}
 
     public Client(int phoneNumber, String name){
         this.phoneNumber = phoneNumber;
         this.name = name;
+        this.bonuses = new HashSet<>();
+
     }
 
     public Long getId() {
@@ -51,5 +53,9 @@ public class Client {
 
     public void addBonus(Bonus bonus){
         this.bonuses.add(bonus);
+    }
+
+    public Set<Bonus> getBonuses() {
+        return bonuses;
     }
 }
