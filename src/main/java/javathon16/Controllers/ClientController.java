@@ -18,14 +18,16 @@ public class ClientController {
         this.clientRepository = clientRepository;
     }
 
-    @GetMapping("/api/getClientById")
+    @GetMapping("/api/client/getbyid")
     public Client getClientById(@RequestParam(value = "id") Long id){
         return clientRepository.findById(id).get();
     }
 
-    @GetMapping("/qqq")
-    public String qqq(){
+    @PostMapping("/api/client/addclient")
+    public String addclient(@RequestParam(value = "name") String name,
+                            @RequestParam(value = "phoneNumber") String phoneNumber){
         clientRepository.save(new Client(999, "qwe"));
+        System.out.println(clientRepository.findById(new Long(1)));
         return "qqq";
     }
 
