@@ -23,12 +23,20 @@ public class ClientController {
         return clientRepository.findById(id).get();
     }
 
-    @PostMapping("/api/client/addclient")
+    @PostMapping("/api/client/add")
     public String addclient(@RequestParam(value = "name") String name,
-                            @RequestParam(value = "phoneNumber") String phoneNumber){
-        clientRepository.save(new Client(999, "qwe"));
+                            @RequestParam(value = "phoneNumber") int phoneNumber){
+        clientRepository.save(new Client(phoneNumber, name));
         System.out.println(clientRepository.findById(new Long(1)));
         return "qqq";
+    }
+
+    @GetMapping("/api/client/deletebyid")
+    public String deleteClient(@RequestParam(value = "id") Long id){
+
+        clientRepository.deleteById(id);
+        return "success!";
+
     }
 
 
