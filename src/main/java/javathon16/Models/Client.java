@@ -11,7 +11,7 @@ public class Client {
     @GeneratedValue
     private int id;
 
-    private int phoneNumber;
+    private Long phoneNumber;
 
     private String name;
 
@@ -20,11 +20,10 @@ public class Client {
 
     private Client(){}
 
-    public Client(int phoneNumber, String name){
+    public Client(Long phoneNumber, String name){
         this.phoneNumber = phoneNumber;
         this.name = name;
         this.bonuses = new HashSet<>();
-
     }
 
     public int getId() {
@@ -35,11 +34,11 @@ public class Client {
         this.id = id;
     }
 
-    public int getPhoneNumber() {
+    public Long getPhoneNumber() {
         return phoneNumber;
     }
 
-    public void setPhoneNumber(int phoneNumber) {
+    public void setPhoneNumber(Long phoneNumber) {
         this.phoneNumber = phoneNumber;
     }
 
