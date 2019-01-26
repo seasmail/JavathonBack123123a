@@ -17,16 +17,19 @@ public class CompanyController {
     @Autowired
     public CompanyController(CompanyRepository companyRepository) {
         this.companyRepository = companyRepository;
-        companyRepository.save(new Company(1, "coffy", 5));}
+        companyRepository.save(new Company("coffy", 5));
+    }
+
     @GetMapping("/api/company/getbyid")
     public Company getCompanyById ( @RequestParam(value = "id" )int id){
         return companyRepository.findById(id).get();
     }
+
     @PostMapping("/api/company/add")
     public String addcompany(@RequestParam (value = "name") String name,
                              @RequestParam ( value = "id") int id,
                              @RequestParam (value ="maxBonus" ) int maxBonus) {
-        companyRepository.save(new Company(id, name, maxBonus));
+        companyRepository.save(new Company(name, maxBonus));
         System.out.println(companyRepository.findById(1));
         return "qqq";
     }

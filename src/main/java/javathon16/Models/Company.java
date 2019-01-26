@@ -20,8 +20,7 @@ public class Company {
 
     private Company(){}
 
-    public Company(int id, String name, int maxBonus){
-        this.id = id;
+    public Company(String name, int maxBonus){
         this.name = name;
         this.maxBonus = maxBonus;
         this.clients = new HashSet<>();
