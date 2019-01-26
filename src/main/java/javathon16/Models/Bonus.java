@@ -10,7 +10,7 @@ public class Bonus {
 
     @Id
     @GeneratedValue
-    private Long id;
+    private int id;
 
     private int value;
 
