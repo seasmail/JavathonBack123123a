@@ -27,10 +27,8 @@ public class CompanyController {
 
     @PostMapping("/api/company/add")
     public String addcompany(@RequestParam (value = "name") String name,
-                             @RequestParam ( value = "id") int id,
                              @RequestParam (value ="maxBonus" ) int maxBonus) {
         companyRepository.save(new Company(name, maxBonus));
-        System.out.println(companyRepository.findById(1));
         return "qqq";
     }
 }
