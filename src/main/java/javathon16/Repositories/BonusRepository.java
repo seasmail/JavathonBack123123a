@@ -7,6 +7,6 @@ import java.util.List;
 
 public interface BonusRepository extends CrudRepository<Bonus, Integer> {
 
-    List<Bonus> findAllByClientIdAndCompanyId(int clientId, int companyId);
+    Bonus findByClientIdAndCompanyId(int clientId, int companyId);
 
 }

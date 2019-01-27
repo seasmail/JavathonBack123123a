@@ -8,6 +8,8 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.util.List;
+
 @RestController
 public class ClientController {
 
@@ -16,6 +18,7 @@ public class ClientController {
     @Autowired
     public ClientController(ClientRepository clientRepository){
         this.clientRepository = clientRepository;
+        clientRepository.save(new Client((long)1111, "Ivan"));
     }
 
     @GetMapping("/api/client/getbyid")
@@ -35,6 +38,10 @@ public class ClientController {
         clientRepository.deleteById(id);
     }
 
+    @GetMapping("/api/client/get")
+    public List<Client> getClients(){
+       return (List)clientRepository.findAll();
+    }
 
 
 
