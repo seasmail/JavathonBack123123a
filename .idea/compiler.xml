@@ -15,7 +15,7 @@
   <component name="JavacSettings">
     <option name="ADDITIONAL_OPTIONS_OVERRIDE">
       <module name="JavathonBack" options="-parameters" />
-      <module name="JavathonBack123" options="-parameters" />
+      <module name="JavathonBack123" options="" />
       <module name="JavathonBackk" options="-parameters" />
     </option>
   </component>
