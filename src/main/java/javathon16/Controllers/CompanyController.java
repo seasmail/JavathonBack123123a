@@ -10,6 +10,8 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.util.List;
+
 @RestController
 public class CompanyController {
     CompanyRepository companyRepository;
@@ -29,5 +31,10 @@ public class CompanyController {
     public void addcompany(@RequestParam (value = "name") String name,
                              @RequestParam (value ="maxBonus" ) int maxBonus) {
         companyRepository.save(new Company(name, maxBonus));
+    }
+
+    @GetMapping("/api/company/get")
+    public List<Company> getCompanies(){
+        return (List)companyRepository.findAll();
     }
 }
